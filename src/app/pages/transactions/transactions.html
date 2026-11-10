@@ -1,0 +1,199 @@
+<section class="transactions-page">
+
+    <!-- Sticky Page Header -->
+    <header class="page-header">
+        <div class="header-content">
+            <p class="eyebrow">TRANSACTION MANAGEMENT</p>
+            <h1>Transactions</h1>
+            <p class="page-description">
+                Manage and monitor your recorded transactions.
+            </p>
+        </div>
+
+        <button type="button" class="add-button" (click)="openModal()">
+            <span class="plus-icon">+</span>
+            Add Transaction
+        </button>
+    </header>
+
+    <main class="page-content">
+
+        @if (successMessage) {
+        <div class="success-message">
+            <span class="feedback-icon">✓</span>
+            {{ successMessage }}
+        </div>
+        }
+
+        @if (isLoading) {
+        <div class="message-container">
+            <div class="loading-spinner"></div>
+            <p>Loading transactions...</p>
+        </div>
+        }
+        @else if (errorMessage) {
+        <div class="error-container">
+            <p>{{ errorMessage }}</p>
+            <button type="button" (click)="loadTransactions()">
+                Try Again
+            </button>
+        </div>
+        }
+        @else {
+        <section class="table-section">
+
+            <div class="table-header">
+                <div>
+                    <h2>All Transactions</h2>
+                    <p>Review your transaction records below.</p>
+                </div>
+
+                <span class="record-count">
+                    {{ transactions.length }} Records
+                </span>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction Date</th>
+                            <th>Account Number</th>
+                            <th>Account Holder</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @for (transaction of transactions; track $index) {
+                        <tr>
+                            <td class="date-cell">
+                                {{ transaction.transactionDate }}
+                            </td>
+
+                            <td class="account-cell">
+                                {{ transaction.accountNumber }}
+                            </td>
+
+                            <td class="holder-cell">
+                                {{ transaction.accountHolderName }}
+                            </td>
+
+                            <td class="amount-cell">
+                                ₱{{ transaction.amount.toFixed(2) }}
+                            </td>
+
+                            <td>
+                                <span class="status" [class.status-pending]="transaction.status === 'Pending'"
+                                    [class.status-settled]="transaction.status === 'Settled'"
+                                    [class.status-failed]="transaction.status === 'Failed'">
+                                    <span class="status-dot"></span>
+                                    {{ transaction.status }}
+                                </span>
+                            </td>
+                        </tr>
+                        }
+                        @empty {
+                        <tr>
+                            <td colspan="5" class="empty-message">
+                                <div class="empty-state">
+                                    <span class="empty-icon">▤</span>
+                                    <strong>No transactions found</strong>
+                                    <p>Your transaction records will appear here.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+        }
+
+    </main>
+
+    <!-- Add Transaction Modal -->
+    @if (isModalOpen) {
+    <div class="modal-overlay" (click)="closeModal()">
+
+        <div class="modal" (click)="$event.stopPropagation()">
+
+            <div class="modal-header">
+                <div>
+                    <p class="modal-eyebrow">NEW RECORD</p>
+                    <h2>Add Transaction</h2>
+                    <p>Enter the transaction details below.</p>
+                </div>
+
+                <button type="button" class="close-button" aria-label="Close modal" (click)="closeModal()">
+                    &times;
+                </button>
+            </div>
+
+            <form #transactionNgForm="ngForm" (ngSubmit)="saveTransaction()">
+
+                <div class="form-group">
+                    <label for="transactionDate">Transaction Date</label>
+                    <input id="transactionDate" type="date" name="transactionDate"
+                        [(ngModel)]="transactionForm.transactionDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="accountNumber">Account Number</label>
+                    <input id="accountNumber" type="text" name="accountNumber" placeholder="Enter account number"
+                        [(ngModel)]="transactionForm.accountNumber" #accountNumber="ngModel" required>
+
+                    @if (accountNumber.invalid && accountNumber.touched) {
+                    <small class="validation-error">
+                        Account number is required.
+                    </small>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="accountHolderName">Account Holder Name</label>
+                    <input id="accountHolderName" type="text" name="accountHolderName"
+                        placeholder="Enter account holder name" [(ngModel)]="transactionForm.accountHolderName"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <div class="amount-input">
+                        <span>₱</span>
+                        <input id="amount" type="number" name="amount" placeholder="0.00" min="0.01" step="0.01"
+                            [(ngModel)]="transactionForm.amount" #amount="ngModel" required>
+                    </div>
+
+                    @if (amount.invalid && amount.touched) {
+                    <small class="validation-error">
+                        Please enter an amount greater than zero.
+                    </small>
+                    }
+                </div>
+
+                @if (saveErrorMessage) {
+                <div class="error-message">
+                    {{ saveErrorMessage }}
+                </div>
+                }
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-button" (click)="closeModal()">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="submit-button" [disabled]="isSaving || transactionNgForm.invalid">
+                        {{ isSaving ? 'Saving...' : 'Save Transaction' }}
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    }
+
+</section>
