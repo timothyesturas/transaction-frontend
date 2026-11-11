@@ -1,59 +1,131 @@
-# TransactionFrontend
+TRANSACTION MANAGEMENT SYSTEM – FRONTEND
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.11.
+A web-based transaction management application built with Angular. It
+provides an interface for creating, viewing, and monitoring financial
+transactions through a responsive and user-friendly dashboard.
 
-## Development server
+TECHNOLOGY STACK
 
-To start a local development server, run:
+-   Angular
+-   TypeScript
+-   HTML5
+-   CSS3
+-   Bootstrap
 
-```bash
-ng serve
-```
+PREREQUISITES
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Before setting up the project, make sure the following tools are
+installed:
 
-## Code scaffolding
+-   Git: https://git-scm.com/
+-   Node.js and npm: https://nodejs.org/
+-   Angular CLI: https://angular.dev/tools/cli
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Verify your installations by opening a terminal and executing:
 
-```bash
-ng generate component component-name
-```
+    git --version
+    node --version
+    npm --version
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Install Angular CLI globally if it is not yet installed:
 
-```bash
-ng generate --help
-```
+    npm install -g @angular/cli
 
-## Building
+Verify the Angular CLI installation:
 
-To build the project run:
+    ng version
 
-```bash
-ng build
-```
+INSTALLATION AND SETUP
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+STEP 1. CLONE THE REPOSITORY
 
-## Running unit tests
+Open a terminal and execute:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+    git clone <FRONTEND_REPOSITORY_URL>
 
-```bash
-ng test
-```
+Navigate into the cloned project directory:
 
-## Running end-to-end tests
+    cd transaction-frontend
 
-For end-to-end (e2e) testing, run:
+STEP 2. INSTALL DEPENDENCIES
 
-```bash
-ng e2e
-```
+Install the required project dependencies using npm:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+    npm install
 
-## Additional Resources
+This command downloads and installs the packages specified in
+package.json.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+STEP 3. CONFIGURE THE APPLICATION
+
+Check the application’s environment configuration or API service
+configuration.
+
+Make sure the API base URL is set to the appropriate backend address.
+
+For example:
+
+    http://localhost:8080
+
+Replace this example with the actual API URL configured for your
+environment.
+
+STEP 4. RUN THE DEVELOPMENT SERVER
+
+Start the Angular development server:
+
+    ng serve
+
+Wait until the application finishes compiling successfully.
+
+STEP 5. ACCESS THE APPLICATION
+
+Open your browser and navigate to:
+
+    http://localhost:4200
+
+The Transaction Management System frontend should now be accessible.
+
+AVAILABLE COMMANDS
+
+npm install Install project dependencies.
+
+ng serve Start the development server.
+
+ng build Build the application for production.
+
+ng test Execute unit tests.
+
+TROUBLESHOOTING
+
+Angular CLI is not recognized
+
+Install Angular CLI globally:
+
+    npm install -g @angular/cli
+
+Dependencies are missing
+
+Run the following command inside the project directory:
+
+    npm install
+
+Application cannot connect to the API
+
+-   Verify the configured API base URL.
+-   Check that the API endpoint is accessible.
+-   Verify the browser’s network console for request errors.
+
+Port 4200 is already in use
+
+Run Angular on another port:
+
+    ng serve --port 4201
+
+Then access the application at:
+
+    http://localhost:4201
+
+LICENSE
+
+This project is available for educational and portfolio purposes.
