@@ -1,131 +1,123 @@
-TRANSACTION MANAGEMENT SYSTEM – FRONTEND
+# Transaction Management System - Frontend
 
-A web-based transaction management application built with Angular. It
-provides an interface for creating, viewing, and monitoring financial
-transactions through a responsive and user-friendly dashboard.
+Follow these instructions to download, install, and run the frontend application on your computer.
 
-TECHNOLOGY STACK
+## 1. Install the Required Tools
 
--   Angular
--   TypeScript
--   HTML5
--   CSS3
--   Bootstrap
+Before cloning the project, install the following:
 
-PREREQUISITES
+### Git
+1. Open https://git-scm.com/downloads.
+2. Download Git for your operating system.
+3. Run the installer and follow the installation instructions.
 
-Before setting up the project, make sure the following tools are
-installed:
+### Node.js and npm
+1. Open https://nodejs.org/.
+2. Download and install a Node.js version compatible with this project's Angular version.
+3. npm is included with the Node.js installation.
 
--   Git: https://git-scm.com/
--   Node.js and npm: https://nodejs.org/
--   Angular CLI: https://angular.dev/tools/cli
+### Verify the Installations
 
-Verify your installations by opening a terminal and executing:
+Open a terminal (Command Prompt, PowerShell, or Git Bash) and run these commands one at a time:
 
-    git --version
-    node --version
-    npm --version
+```bash
+git --version
+node --version
+npm --version
+```
 
-Install Angular CLI globally if it is not yet installed:
+Each command should display an installed version. If a command is not recognized, install the corresponding tool and reopen the terminal.
 
-    npm install -g @angular/cli
+## 2. Clone the Frontend Repository
 
-Verify the Angular CLI installation:
+1. Open a terminal.
+2. Go to the folder where you want to keep the project. For example:
 
-    ng version
+```bash
+cd C:\Angular
+```
 
-INSTALLATION AND SETUP
+3. Clone the repository. Replace the placeholder with the actual Git repository URL:
 
-STEP 1. CLONE THE REPOSITORY
+```bash
+git clone <FRONTEND_REPOSITORY_URL>
+```
 
-Open a terminal and execute:
+4. Enter the project folder:
 
-    git clone <FRONTEND_REPOSITORY_URL>
+```bash
+cd transaction-frontend
+```
 
-Navigate into the cloned project directory:
+## 3. Install Project Dependencies
 
-    cd transaction-frontend
+Make sure the terminal is inside the `transaction-frontend` folder. Run:
 
-STEP 2. INSTALL DEPENDENCIES
+```bash
+npm install
+```
 
-Install the required project dependencies using npm:
+This downloads the packages required by the project. Wait until the command finishes.
 
-    npm install
+## 4. Start the Frontend Application
 
-This command downloads and installs the packages specified in
-package.json.
+In the same terminal and project folder, run:
 
-STEP 3. CONFIGURE THE APPLICATION
+```bash
+npx ng serve
+```
 
-Check the application’s environment configuration or API service
-configuration.
+Wait for Angular to finish compiling. Keep this terminal open while using the application.
 
-Make sure the API base URL is set to the appropriate backend address.
+## 5. Open the Application
 
-For example:
+Open a web browser and visit:
 
-    http://localhost:8081
+```text
+http://localhost:4200
+```
 
-Replace this example with the actual API URL configured for your
-environment.
+The frontend application should now appear in your browser.
 
-STEP 4. RUN THE DEVELOPMENT SERVER
+## 6. Stop the Application
 
-Start the Angular development server:
+1. Return to the terminal where the application is running.
+2. Press `CTRL + C`.
+3. If prompted to terminate the process, enter `Y` and press Enter.
 
-    ng serve
+The development server will stop.
 
-Wait until the application finishes compiling successfully.
+## 7. Run the Application Again
 
-STEP 5. ACCESS THE APPLICATION
+After the initial setup, you do not need to clone the repository or run `npm install` again unless the project dependencies change.
 
-Open your browser and navigate to:
+To start the application another time:
 
-    http://localhost:4200
+1. Open a terminal.
+2. Navigate to the project folder:
 
-The Transaction Management System frontend should now be accessible.
+```bash
+cd C:\Angular\transaction-frontend
+```
 
-AVAILABLE COMMANDS
+3. Start the development server:
 
-npm install Install project dependencies.
+```bash
+npx ng serve
+```
 
-ng serve Start the development server.
+4. Open http://localhost:4200 in your browser.
 
-ng build Build the application for production.
+## Optional: Use a Different Port
 
-ng test Execute unit tests.
+If port `4200` is already being used, start the application on port `4201`:
 
-TROUBLESHOOTING
+```bash
+npx ng serve --port 4201
+```
 
-Angular CLI is not recognized
+Then open:
 
-Install Angular CLI globally:
-
-    npm install -g @angular/cli
-
-Dependencies are missing
-
-Run the following command inside the project directory:
-
-    npm install
-
-Application cannot connect to the API
-
--   Verify the configured API base URL.
--   Check that the API endpoint is accessible.
--   Verify the browser’s network console for request errors.
-
-Port 4200 is already in use
-
-Run Angular on another port:
-
-    ng serve --port 4201
-
-Then access the application at:
-
-    http://localhost:4201
-
-LICENSE
-
-This project is available for educational and portfolio purposes.
+```text
+http://localhost:4201
+```
