@@ -65,7 +65,7 @@ Make sure the API base URL is set to the appropriate backend address.
 
 For example:
 
-    http://localhost:8080
+    http://localhost:8081
 
 Replace this example with the actual API URL configured for your
 environment.
